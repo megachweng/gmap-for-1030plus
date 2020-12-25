@@ -1,0 +1,1 @@
+Download [bounds-latest.zip](http://osm.thkukuk.de/data/bounds-latest.zip) and [sea-latest.zip](http://osm.thkukuk.de/data/sea-latest.zip) to this folder and do not unzip

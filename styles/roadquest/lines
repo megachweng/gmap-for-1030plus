@@ -1,0 +1,107 @@
+# -------------------------------------------------------------------
+# This is a mkgmap style file for converting OSM ways
+# into Garmin lines.
+# Any line prefaced with # is a comment and will not be applied.
+# Each line is a rule, of the generalised format:
+#  OSM_tag(s)_to_match  [Garmin_type_code resolution]
+# See http://wiki.openstreetmap.org/wiki/Mkgmap/help/style_rules
+# and http://wiki.openstreetmap.org/wiki/Mkgmap/help/Custom_styles
+# for more information.
+
+# first set the country code
+mkgmap:country!=* & mkgmap:admin_level2=* { set mkgmap:country='${mkgmap:admin_level2}' }
+mkgmap:country!=* & addr:country=* { set mkgmap:country='${addr:country}' }
+mkgmap:country!=* & is_in:country=* { set mkgmap:country='${is_in:country}' }
+
+# common rules for all the rest of countries
+mkgmap:region!=* & mkgmap:admin_level6=* { set mkgmap:region='${mkgmap:admin_level6}' } 
+mkgmap:region!=* & mkgmap:admin_level5=* { set mkgmap:region='${mkgmap:admin_level5}' } 
+mkgmap:region!=* & mkgmap:admin_level4=* { set mkgmap:region='${mkgmap:admin_level4}' } 
+mkgmap:region!=* & mkgmap:admin_level3=* { set mkgmap:region='${mkgmap:admin_level3}' } 
+mkgmap:region!=* & is_in:county=* { set mkgmap:region='${is_in:county}' } 
+
+mkgmap:city!=* & mkgmap:admin_level8=* { set mkgmap:city='${mkgmap:admin_level8}' } 
+mkgmap:city!=* & mkgmap:admin_level7=* { set mkgmap:city='${mkgmap:admin_level7}' } 
+mkgmap:city!=* & mkgmap:admin_level9=* { set mkgmap:city='${mkgmap:admin_level9}' } 
+mkgmap:city!=* & mkgmap:admin_level10=* { set mkgmap:city='${mkgmap:admin_level10}' } 
+mkgmap:city!=* & is_in:city=* { set mkgmap:city='${is_in:city}' }
+mkgmap:city!=* & addr:city=* { set mkgmap:city='${addr:city}' }
+
+mkgmap:postal_code!=* & mkgmap:postcode=* { set mkgmap:postal_code='${mkgmap:postcode}' } 
+mkgmap:postal_code!=* & addr:postcode=* { set mkgmap:postal_code='${addr:postcode}' } 
+
+mkgmap:street!=* & addr:street=* { set mkgmap:street='${addr:street}' }
+mkgmap:street!=* & addr:housename=* { set mkgmap:street='${addr:housename}' }
+
+mkgmap:housenumber!=* & addr:housenumber=* { set mkgmap:housenumber='${addr:housenumber}' }
+
+mkgmap:phone!=* & phone=* { set mkgmap:phone='${phone}' }
+mkgmap:phone!=* & contact:phone=* { add mkgmap:phone='${contact:phone}' }
+
+mkgmap:is_in!=* & is_in=* { set mkgmap:is_in='${is_in}' }
+
+# Bike not accessable
+cycleway=yes|bicycle=yes {add bicycle=yes}
+
+
+# change some minor way to more specific
+highway=pedestrian & area!=yes {set highway=track}
+highway=bridleway {set highway=track}
+highway=byway {set highway=track}
+highway=footway {set highway=track}
+highway=path {set highway=track}
+highway=steps {set highway=track}
+highway=track {set highway=track}
+
+highway=cycleway {set highway=unclassified}
+highway=unclassified {set highway=unclassified}
+highway=living_street {set highway=unclassified}
+highway=residential {set highway=unclassified}
+highway=service {set highway=unclassified}
+highway=road {set highway=unclassified}
+
+# Set highway symbols
+highway=trunk {name '${name:zh}' | '${name}'}
+highway=primary {name '${name:zh}' | '${name}'}
+highway=secondary {name '${name:zh}' | '${name}'}
+highway=tertiary {name '${name:zh}' | '${name}'}
+highway=* & name=* {name '${name:zh}' | '${name}'}
+
+
+# Bridges and tunnels
+bridge=yes | bridges=true | bridge=viaduct | bridge=1 [0x30 resolution 21 continue with_actions]
+tunnel=yes | tunnel=true | tunnel=1 [0x31 resolution 21 continue with_actions]
+
+# Roundabouts
+junction=roundabout & highway=trunk                                                                     [0x0c road_class=3 road_speed=2 resolution 18 continue]
+junction=roundabout & highway=primary                                                                   [0x0c road_class=3 road_speed=2 resolution 18 continue]
+junction=roundabout & highway=secondary                                                                 [0x0c road_class=2 road_speed=2 resolution 20 continue]
+junction=roundabout & highway=tertiary                                                                  [0x0c road_class=1 road_speed=1 resolution 22 continue]
+junction=roundabout & highway=unclassified                                                              [0x0c road_class=1 road_speed=1 resolution 22 continue]
+junction=roundabout & highway=*                                                                         [0x0c road_class=1 road_speed=1 resolution 22 continue]
+
+# Ways sorted roughly
+
+highway=trunk {add bicycle = no; add foot = no}                                                         [0x02 road_class=4 road_speed=5 resolution 16]
+highway=trunk_link {add bicycle = no; add foot = no}                                                    [0x02 road_class=3 road_speed=2 resolution 16]
+
+highway=primary                                                                                         [0x03 road_class=3 road_speed=4 resolution 18]
+highway=primary_link                                                                                    [0x03 road_class=3 road_speed=1 resolution 18]
+
+highway=secondary                                                                                       [0x04 road_class=2 road_speed=3 resolution 19]
+highway=secondary_link                                                                                  [0x04 road_class=2 road_speed=1 resolution 19]
+
+highway=tertiary                                                                                        [0x05 road_class=1 road_speed=3 resolution 20]
+highway=tertiary_link                                                                                   [0x05 road_class=1 road_speed=1 resolution 20]
+
+highway=unclassified {add access=yes;add bicycle=yes; add foot=yes}                                     [0x06 road_class=1 road_speed=3 resolution 22]
+highway=track {add access = no; add bicycle = no; add foot = yes}                                       [0x0a road_class=0 road_speed=1 resolution 23]
+
+
+
+waterway=canal | waterway=river                                                                         [0x1f resolution 18]
+waterway=drain | waterway=stream                                                                        [0x18 resolution 23]
+
+# Boundaries
+(admin_level=2 | admin_level=4) {set admin_level=4}
+boundary=administrative & admin_level=4                                                                 [0x1d resolution 16]

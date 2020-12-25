@@ -1,0 +1,314 @@
+family-id: 980
+product-id: 1
+series-name: OSM
+family-name: OSM
+area-name: OSM
+location-autofill:is_in,nearest
+country-name=China
+country-abbr=CHN
+add-pois-to-areas
+add-pois-to-lines
+name-tag-list: name:zh,name,place_name
+generate-sea: land-tag=natural=background
+draw-priority:25
+code-page=936
+tdbfile
+index
+process-destination
+route
+remove-short-arcs
+adjust-turn-headings:3
+drive-on-right
+reduce-point-density-polygon:3
+merge-lines
+min-size-polygon: 4
+polygon-size-limits=24:12, 18:10, 16:8, 14:4, 12:2, 11:0
+link-pois-to-ways
+make-opposite-cycleways
+preserve-element-order
+net
+show-profiles:1
+x-split-name-index
+gmapsupp
+housenumbers
+verbose
+check-styles
+# ------------------------------------------------
+# TILE-BY-TILE OPTIONS
+# ------------------------------------------------
+# Following is the list of GCC map tiles
+# If the number of tiles changes, you will need to update this section using template.args that is created by splitter
+# All GCC basemap tiles start at 63247001
+
+#overview-mapname: overview
+#overview-mapnumber: 63240002
+#Set name of overview file used when installing in MapSource
+
+mapname: 63240001
+description: KZ-Almaty
+input-file: splitted/63240001.osm.pbf
+
+mapname: 63240002
+description: CN-Urumqi
+input-file: splitted/63240002.osm.pbf
+
+mapname: 63240003
+description: CN-Lhasa
+input-file: splitted/63240003.osm.pbf
+
+mapname: 63240004
+description: NP-Kathmandu
+input-file: splitted/63240004.osm.pbf
+
+mapname: 63240005
+description: CN-Xining
+input-file: splitted/63240005.osm.pbf
+
+mapname: 63240006
+description: CN-Lanzhou
+input-file: splitted/63240006.osm.pbf
+
+mapname: 63240007
+description: CN-Linxia Chengguanzhen
+input-file: splitted/63240007.osm.pbf
+
+mapname: 63240008
+description: CN-Qamdo
+input-file: splitted/63240008.osm.pbf
+
+mapname: 63240009
+description: CN-Chengdu
+input-file: splitted/63240009.osm.pbf
+
+mapname: 63240010
+description: CN-Tianshui
+input-file: splitted/63240010.osm.pbf
+
+mapname: 63240011
+description: CN-Mianyang
+input-file: splitted/63240011.osm.pbf
+
+mapname: 63240012
+description: MM-Lashio
+input-file: splitted/63240012.osm.pbf
+
+mapname: 63240013
+description: CN-Kunming
+input-file: splitted/63240013.osm.pbf
+
+mapname: 63240014
+description: CN-Lijiang
+input-file: splitted/63240014.osm.pbf
+
+mapname: 63240015
+description: CN-Dadukou
+input-file: splitted/63240015.osm.pbf
+
+mapname: 63240016
+description: CN-Guiyang
+input-file: splitted/63240016.osm.pbf
+
+mapname: 63240017
+description: CN-Wenshan City
+input-file: splitted/63240017.osm.pbf
+
+mapname: 63240018
+description: CN-Zigong
+input-file: splitted/63240018.osm.pbf
+
+mapname: 63240019
+description: CN-Chongqing
+input-file: splitted/63240019.osm.pbf
+
+mapname: 63240020
+description: CN-Qiqihar
+input-file: splitted/63240020.osm.pbf
+
+mapname: 63240021
+description: CN-Mudanjiang
+input-file: splitted/63240021.osm.pbf
+
+mapname: 63240022
+description: CN-Harbin
+input-file: splitted/63240022.osm.pbf
+
+mapname: 63240023
+description: CN-Shenyang
+input-file: splitted/63240023.osm.pbf
+
+mapname: 63240024
+description: CN-Dalian
+input-file: splitted/63240024.osm.pbf
+
+mapname: 63240025
+description: CN-Ordos
+input-file: splitted/63240025.osm.pbf
+
+mapname: 63240026
+description: CN-Zhangjiakou
+input-file: splitted/63240026.osm.pbf
+
+mapname: 63240027
+description: CN-Tianjin
+input-file: splitted/63240027.osm.pbf
+
+mapname: 63240028
+description: CN-Beijing
+input-file: splitted/63240028.osm.pbf
+
+mapname: 63240029
+description: CN-Baoding
+input-file: splitted/63240029.osm.pbf
+
+mapname: 63240030
+description: CN-Tai'an
+input-file: splitted/63240030.osm.pbf
+
+mapname: 63240031
+description: CN-Qingdao
+input-file: splitted/63240031.osm.pbf
+
+mapname: 63240032
+description: CN-Taiyuan
+input-file: splitted/63240032.osm.pbf
+
+mapname: 63240033
+description: CN-Shijiazhuang
+input-file: splitted/63240033.osm.pbf
+
+mapname: 63240034
+description: CN-Anyang
+input-file: splitted/63240034.osm.pbf
+
+mapname: 63240035
+description: HK-Hong Kong
+input-file: splitted/63240035.osm.pbf
+
+mapname: 63240036
+description: CN-Shenzhen
+input-file: splitted/63240036.osm.pbf
+
+mapname: 63240037
+description: CN-Shantou
+input-file: splitted/63240037.osm.pbf
+
+mapname: 63240038
+description: CN-Ji'an
+input-file: splitted/63240038.osm.pbf
+
+mapname: 63240039
+description: CN-Nanping
+input-file: splitted/63240039.osm.pbf
+
+mapname: 63240040
+description: CN-Fuzhou
+input-file: splitted/63240040.osm.pbf
+
+mapname: 63240041
+description: CN-Zunyi
+input-file: splitted/63240041.osm.pbf
+
+mapname: 63240042
+description: CN-Guilin
+input-file: splitted/63240042.osm.pbf
+
+mapname: 63240043
+description: CN-Hengyang
+input-file: splitted/63240043.osm.pbf
+
+mapname: 63240044
+description: CN-Zhongshan
+input-file: splitted/63240044.osm.pbf
+
+mapname: 63240045
+description: CN-Nanning
+input-file: splitted/63240045.osm.pbf
+
+mapname: 63240046
+description: CN-Yunfu
+input-file: splitted/63240046.osm.pbf
+
+mapname: 63240047
+description: CN-Guangzhou
+input-file: splitted/63240047.osm.pbf
+
+mapname: 63240048
+description: CN-Jiangmen
+input-file: splitted/63240048.osm.pbf
+
+mapname: 63240049
+description: CN-Zhengzhou
+input-file: splitted/63240049.osm.pbf
+
+mapname: 63240050
+description: CN-Xi'an
+input-file: splitted/63240050.osm.pbf
+
+mapname: 63240051
+description: CN-Wanxian
+input-file: splitted/63240051.osm.pbf
+
+mapname: 63240052
+description: CN-Fuling
+input-file: splitted/63240052.osm.pbf
+
+mapname: 63240053
+description: CN-Changsha
+input-file: splitted/63240053.osm.pbf
+
+mapname: 63240054
+description: CN-Wuhan
+input-file: splitted/63240054.osm.pbf
+
+mapname: 63240055
+description: CN-Hefei
+input-file: splitted/63240055.osm.pbf
+
+mapname: 63240056
+description: CN-Huangshi
+input-file: splitted/63240056.osm.pbf
+
+mapname: 63240057
+description: CN-Shangrao
+input-file: splitted/63240057.osm.pbf
+
+mapname: 63240058
+description: CN-Nanchang
+input-file: splitted/63240058.osm.pbf
+
+mapname: 63240059
+description: CN-Ningbo
+input-file: splitted/63240059.osm.pbf
+
+mapname: 63240060
+description: CN-Hangzhou
+input-file: splitted/63240060.osm.pbf
+
+mapname: 63240061
+description: CN-Quzhou
+input-file: splitted/63240061.osm.pbf
+
+mapname: 63240062
+description: CN-Puyang
+input-file: splitted/63240062.osm.pbf
+
+mapname: 63240063
+description: CN-Shanghai
+input-file: splitted/63240063.osm.pbf
+
+mapname: 63240064
+description: CN-Suzhou
+input-file: splitted/63240064.osm.pbf
+
+mapname: 63240065
+description: CN-Yancheng
+input-file: splitted/63240065.osm.pbf
+
+mapname: 63240066
+description: CN-Nanjing
+input-file: splitted/63240066.osm.pbf
+
+mapname: 63240067
+description: CN-Wuxi
+input-file: splitted/63240067.osm.pbf
+
