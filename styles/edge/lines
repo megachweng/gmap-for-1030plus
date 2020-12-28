@@ -70,7 +70,7 @@ highway=* & name=* {name '${name:zh}' | '${name}'}
 
 # Bridges and tunnels
 bridge=yes | bridges=true | bridge=viaduct | bridge=1 [0x30 resolution 21 continue with_actions]
-tunnel=yes | tunnel=true | tunnel=1 [0x31 resolution 21 continue with_actions]
+tunnel=yes | tunnel=true | tunnel=1 [0x31 resolution 18 continue with_actions]
 
 # Roundabouts
 junction=roundabout & highway=trunk                                                                     [0x0c road_class=3 road_speed=2 resolution 18 continue]
@@ -82,20 +82,20 @@ junction=roundabout & highway=*                                                 
 
 # Ways sorted roughly
 
-highway=trunk {add bicycle = no; add foot = no}                                                         [0x02 road_class=4 road_speed=5 resolution 16]
-highway=trunk_link {add bicycle = no; add foot = no}                                                    [0x02 road_class=3 road_speed=2 resolution 16]
+highway=trunk {add bicycle = no; add foot = no}                                                         [0x02 road_class=4 road_speed=5 resolution 19]
+highway=trunk_link {add bicycle = no; add foot = no}                                                    [0x02 road_class=3 road_speed=2 resolution 19]
 
-highway=primary                                                                                         [0x03 road_class=3 road_speed=4 resolution 18]
-highway=primary_link                                                                                    [0x03 road_class=3 road_speed=1 resolution 18]
+highway=primary                                                                                         [0x03 road_class=3 road_speed=4 resolution 20]
+highway=primary_link                                                                                    [0x03 road_class=3 road_speed=1 resolution 20]
 
-highway=secondary                                                                                       [0x04 road_class=2 road_speed=3 resolution 19]
-highway=secondary_link                                                                                  [0x04 road_class=2 road_speed=1 resolution 19]
+highway=secondary                                                                                       [0x04 road_class=2 road_speed=3 resolution 21]
+highway=secondary_link                                                                                  [0x04 road_class=2 road_speed=1 resolution 21]
 
-highway=tertiary                                                                                        [0x05 road_class=1 road_speed=3 resolution 20]
-highway=tertiary_link                                                                                   [0x05 road_class=1 road_speed=1 resolution 20]
+highway=tertiary                                                                                        [0x05 road_class=1 road_speed=3 resolution 22]
+highway=tertiary_link                                                                                   [0x05 road_class=1 road_speed=1 resolution 22]
 
-highway=unclassified {add access=yes;add bicycle=yes; add foot=yes}                                     [0x06 road_class=1 road_speed=3 resolution 22]
-highway=track {add access = no; add bicycle = no; add foot = yes}                                       [0x0a road_class=0 road_speed=1 resolution 23]
+highway=unclassified {add access=yes;add bicycle=yes; add foot=yes}                                     [0x06 road_class=1 road_speed=3 resolution 23]
+highway=track {add access = no; add bicycle = no; add foot = yes}                                       [0x0a road_class=0 road_speed=1 resolution 24]
 
 
 
