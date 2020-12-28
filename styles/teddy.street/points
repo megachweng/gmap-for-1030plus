@@ -1,0 +1,398 @@
+# Aus dem Original- Default- Style
+# first set the country code
+# Name
+# Rules for naming objects, based on the following tags:
+# name, brand, operator, ref
+
+# None of operator, brand given
+ref=* & (operator!=* & brand!=*) { name '${ref} ${name}' | '${ref}' }
+
+# Both operator and brand given
+operator=* & brand=* {
+ name '${brand}: ${ref} ${name} (${operator})' |
+      '${brand} ${ref} (${operator})' |
+      '${brand}: ${name} (${operator})' |
+      '${brand} (${operator})'
+}
+
+# One of operator or brand given
+operator=* & brand!=* {
+ name '${operator}: ${ref} ${name}' |
+      '${operator}: ${name}' |
+      '${operator}: ${ref}' |
+      '${operator}' |
+      '${ref}'
+}
+brand=* & operator!=* {
+ name '${brand}: ${ref} ${name}' |
+      '${brand}: ${name}' | 
+      '${brand}: ${ref}' |
+      '${brand}' |
+      '${ref}'
+}
+
+
+mkgmap:country!=* & mkgmap:admin_level2=* { set mkgmap:country='${mkgmap:admin_level2}' }
+mkgmap:country!=* & addr:country=* { set mkgmap:country='${addr:country}' }
+mkgmap:country!=* & is_in:country=* { set mkgmap:country='${is_in:country}' }
+
+# country specific rules first
+
+# Netherlands = NLD
+mkgmap:country=NLD & mkgmap:region!=* & mkgmap:admin_level4=* { set mkgmap:region='${mkgmap:admin_level4}' }
+mkgmap:country=NLD & mkgmap:city!=* & mkgmap:admin_level10=* { set mkgmap:city='${mkgmap:admin_level10}' } 
+mkgmap:country=NLD & mkgmap:city!=* & mkgmap:admin_level8=* { set mkgmap:city='${mkgmap:admin_level8}' } 
+
+# Germany = DEU cities
+mkgmap:country=DEU & mkgmap:city!=* & mkgmap:admin_level8=* { set mkgmap:city='${mkgmap:admin_level8}' } 
+mkgmap:country=DEU & mkgmap:city!=* & mkgmap:admin_level7=* { set mkgmap:city='${mkgmap:admin_level7}' } 
+mkgmap:country=DEU & mkgmap:city!=* & mkgmap:admin_level6=* { set mkgmap:city='${mkgmap:admin_level6}' } 
+mkgmap:country=DEU & mkgmap:city!=* & mkgmap:admin_level9=* { set mkgmap:city='${mkgmap:admin_level9}' } 
+mkgmap:country=DEU & mkgmap:city!=* & mkgmap:admin_level10=* { set mkgmap:city='${mkgmap:admin_level10}' } 
+
+
+mkgmap:country=AUT & mkgmap:city!=* & mkgmap:admin_level8=* { set mkgmap:city='${mkgmap:admin_level8}' }
+mkgmap:country=BEL & mkgmap:city!=* & mkgmap:admin_level8=* { set mkgmap:city='${mkgmap:admin_level8}' }
+mkgmap:country=CZE & mkgmap:city!=* & mkgmap:admin_level8=* { set mkgmap:city='${mkgmap:admin_level8}' }
+mkgmap:country=CZE & mkgmap:city!=* & mkgmap:admin_level7=* { set mkgmap:city='${mkgmap:admin_level7}' }
+mkgmap:country=DNK & mkgmap:city!=* & mkgmap:admin_level8=* { set mkgmap:city='${mkgmap:admin_level8}' }
+mkgmap:country=DNK & mkgmap:city!=* & mkgmap:admin_level7=* { set mkgmap:city='${mkgmap:admin_level7}' }
+mkgmap:country=FIN & mkgmap:city!=* & mkgmap:admin_level9=* { set mkgmap:city='${mkgmap:admin_level9}' }
+mkgmap:country=FIN & mkgmap:city!=* & mkgmap:admin_level8=* { set mkgmap:city='${mkgmap:admin_level8}' }
+mkgmap:country=FRA & mkgmap:city!=* & mkgmap:admin_level9=* { set mkgmap:city='${mkgmap:admin_level9}' }
+mkgmap:country=FRA & mkgmap:city!=* & mkgmap:admin_level8=* { set mkgmap:city='${mkgmap:admin_level8}' }
+mkgmap:country=ISL & mkgmap:city!=* & mkgmap:admin_level8=* { set mkgmap:city='${mkgmap:admin_level8}' }
+mkgmap:country=ITA & mkgmap:city!=* & mkgmap:admin_level8=* { set mkgmap:city='${mkgmap:admin_level8}' }
+mkgmap:country=LUX & mkgmap:city!=* & mkgmap:admin_level8=* { set mkgmap:city='${mkgmap:admin_level8}' }
+mkgmap:country=NOR & mkgmap:city!=* & mkgmap:admin_level9=* { set mkgmap:city='${mkgmap:admin_level9}' }
+mkgmap:country=POL & mkgmap:city!=* & mkgmap:admin_level10=* { set mkgmap:city='${mkgmap:admin_level10}' }
+mkgmap:country=POL & mkgmap:city!=* & mkgmap:admin_level8=* { set mkgmap:city='${mkgmap:admin_level8}' }
+mkgmap:country=PRT & mkgmap:city!=* & mkgmap:admin_level9=* { set mkgmap:city='${mkgmap:admin_level9}' }
+mkgmap:country=PRT & mkgmap:city!=* & mkgmap:admin_level8=* { set mkgmap:city='${mkgmap:admin_level8}' }
+mkgmap:country=SVN & mkgmap:city!=* & mkgmap:admin_level10=* { set mkgmap:city='${mkgmap:admin_level10}' }
+mkgmap:country=ESP & mkgmap:city!=* & mkgmap:admin_level8=* { set mkgmap:city='${mkgmap:admin_level8}' }
+mkgmap:country=SWE & mkgmap:city!=* & mkgmap:admin_level9=* { set mkgmap:city='${mkgmap:admin_level9}' }
+mkgmap:country=SWE & mkgmap:city!=* & mkgmap:admin_level7=* { set mkgmap:city='${mkgmap:admin_level7}' }
+mkgmap:country=CHE & mkgmap:city!=* & mkgmap:admin_level8=* { set mkgmap:city='${mkgmap:admin_level8}' }
+ 
+# common rules for all the rest of countries
+mkgmap:region!=* & mkgmap:admin_level6=* { set mkgmap:region='${mkgmap:admin_level6}' } 
+mkgmap:region!=* & mkgmap:admin_level5=* { set mkgmap:region='${mkgmap:admin_level5}' } 
+mkgmap:region!=* & mkgmap:admin_level4=* { set mkgmap:region='${mkgmap:admin_level4}' } 
+mkgmap:region!=* & mkgmap:admin_level3=* { set mkgmap:region='${mkgmap:admin_level3}' } 
+mkgmap:region!=* & is_in:county=* { set mkgmap:region='${is_in:county}' } 
+
+mkgmap:city!=* & mkgmap:admin_level8=* { set mkgmap:city='${mkgmap:admin_level8}' } 
+mkgmap:city!=* & mkgmap:admin_level7=* { set mkgmap:city='${mkgmap:admin_level7}' } 
+mkgmap:city!=* & mkgmap:admin_level9=* { set mkgmap:city='${mkgmap:admin_level9}' } 
+mkgmap:city!=* & mkgmap:admin_level10=* { set mkgmap:city='${mkgmap:admin_level10}' } 
+mkgmap:city!=* & is_in:city=* { set mkgmap:city='${is_in:city}' }
+mkgmap:city!=* & addr:city=* { set mkgmap:city='${addr:city}' }
+
+mkgmap:postal_code!=* & mkgmap:postcode=* { set mkgmap:postal_code='${mkgmap:postcode}' } 
+mkgmap:postal_code!=* & addr:postcode=* { set mkgmap:postal_code='${addr:postcode}' } 
+
+mkgmap:postal_code!=* & mkgmap:postcode=* { set mkgmap:postal_code='${mkgmap:postcode}' } 
+mkgmap:postal_code!=* & addr:postcode=* { set mkgmap:postal_code='${addr:postcode}' } 
+
+mkgmap:street!=* & addr:street=* { set mkgmap:street='${addr:street}' }
+mkgmap:street!=* & addr:housename=* { set mkgmap:street='${addr:housename}' }
+
+mkgmap:housenumber!=* & addr:housenumber=* { set mkgmap:housenumber='${addr:housenumber}' }
+
+mkgmap:phone!=* & phone=* { set mkgmap:phone='${phone}' }
+
+mkgmap:is_in!=* & is_in=* { set mkgmap:is_in='${is_in}' }
+
+
+#muß an den Anfang, da nur was hinzugefügt wird
+internet_access=* { name '${internet_access|subst:yes=>Internet} ${name|def:}' } [0x2f12 resolution 21 continue]
+
+# Spezialbehandlung bei Ampeln, ist möglicherweise 
+# aber nicht so gut, eventuell wieder auskommentieren
+#highway=traffic_signals | highway=traffic_signal { add mkgmap:road-speed = '-2'; add mkgmap:road-speed-min = '1' }
+#highway=crossing { add mkgmap:road-speed = '-1'; add mkgmap:road-speed-min = '1' }
+#highway=stop { add mkgmap:road-speed = '-2'; add mkgmap:road-speed-min = '1' }
+#traffic_calming=* { add mkgmap:road-speed = '-2'; add mkgmap:road-speed-min = '1' }
+#barrier=toll_booth { add mkgmap:road-speed = '-2'; add mkgmap:road-speed-min = '1' }
+
+aeroway=airport [0x5900 resolution 22]
+aeroway=aerodrome [0x2f04 resolution 20]
+aeroway=terminal [0x2f04 resolution 20]
+
+amenity=atm [0x2f06 resolution 24]
+amenity=arts_centre [0x2f14 resolution 24]
+amenity=bank { name '${name} (${operator})' | '${name}' | '${operator}' } [0x2f06 resolution 24]
+amenity=atm { name '${name} (${operator})' | '${name}' | '${operator}' } [0x2f06 resolution 24]
+amenity=bar [0x2d02 resolution 24]
+#amenity=bench [0x6605 resolution 24]
+amenity=biergarten [0x2d02 resolution 24]
+amenity=border_control | barrier=border_control [0x3006 resolution 22]
+amenity=bus_station { name '${name} (${route_ref})' | '${route_ref}' | '${name}' } [0x2f08 resolution 24]
+amenity=cafe [0x2a0e resolution 24]
+amenity=car_wash [0x2f0e resolution 24]
+amenity=cinema [0x2d03 resolution 24]
+amenity=college [0x2c05 resolution 24]
+amenity=courthouse [0x3004 resolution 24]
+amenity=dive_center [0x5c00 resolution 24 default_name 'dive-center']
+#amenity=drinking_water { name '${name}' | 'drinking water' } [0x5000 resolution 24]
+#amenity=well [0x6414 resolution 24]
+amenity=embassy [0x3003 resolution 21 default_name 'Embassy']
+amenity=emergency_phone [0x2f12 resolution 22 default_name 'Emergency Phone']
+amenity=fast_food & cuisine=grill [0x2a03 resolution 24]
+amenity=fast_food & cuisine=pizza [0x2a0a resolution 24]
+amenity=fast_food & cuisine=kebab [0x2a0a resolution 24]
+amenity=fast_food [0x2a07 resolution 24]
+amenity=fire_station [0x3008 resolution 24]
+amenity=fountain [0x6500 resolution 24]
+amenity=fuel { name '${operator}: ${name}' | '${name}' | '${operator}' } [0x2f01 resolution 24]
+amenity=grave_yard [0x6403 resolution 24]
+amenity=hospital [0x3002 resolution 24]
+amenity=kindergarten [0x4900 resolution 24]
+amenity=library [0x2c03 resolution 24]
+amenity=parking [0x2f0b resolution 24 default_name 'Parking']
+#amenity=bicycle_parking [0x2f0b resolution 24]
+amenity=pharmacy [0x2e05 resolution 24]
+amenity=place_of_worship [0x2c0b resolution 24]
+amenity=police [0x3001 resolution 24]
+amenity=post_office { name '${operator}: ${name}' | '${name}' | '${operator}' | 'post office' } [0x2f05 resolution 24]
+amenity=post_box { name '${operator}: ${name}' | '${name}' | '${operator}' | postbox } [0x2f05 resolution 24]
+amenity=pub [0x4600 resolution 24]
+amenity=public_building [0x3003 resolution 24]
+amenity=recycling [0x2f15 resolution 24]
+amenity=restaurant & cuisine=american [0x2a01 resolution 24]
+amenity=restaurant & cuisine=asian [0x2a02 resolution 24]
+amenity=restaurant & cuisine=bagel [0x2a0d resolution 24]
+amenity=restaurant & cuisine=barbecue [0x2a03 resolution 24]
+amenity=restaurant & cuisine='cafe;diner' [0x2a0e resolution 24]
+amenity=restaurant & cuisine=chinese [0x2a04 resolution 24]
+amenity=restaurant & cuisine=deli [0x2a05 resolution 24]
+amenity=restaurant & cuisine=french [0x2a0f resolution 24]
+amenity=restaurant & cuisine=german [0x2a10 resolution 24]
+amenity=restaurant & cuisine=grill [0x2a03 resolution 24]
+amenity=restaurant & cuisine=international [0x2a06 resolution 24]
+amenity=restaurant & cuisine=italian [0x2a08 resolution 24]
+amenity=restaurant & cuisine=japanese [0x2a02 resolution 24]
+amenity=restaurant & cuisine=korean [0x2a02 resolution 24]
+amenity=restaurant & cuisine=mexican [0x2a09 resolution 24]
+amenity=restaurant & cuisine=pizza [0x2a0a resolution 24]
+amenity=restaurant & cuisine=sea_food [0x2a0b resolution 24]
+amenity=restaurant & cuisine=spanish [0x2a09 resolution 24]
+amenity=restaurant & cuisine=speciality [0x2a12 resolution 24]
+amenity=restaurant & cuisine=steak [0x2a0c resolution 24]
+amenity=restaurant & cuisine=thai [0x2a02 resolution 24]
+amenity=restaurant & cuisine=* [0x2a13 resolution 24]
+amenity=restaurant [0x2a00 resolution 24]
+amenity=school [0x2c05 resolution 24]
+#amenity=shelter [0x6100 resolution 24]
+amenity=supermarket [0x2e02 resolution 24]
+amenity=taxi [0x2f17 resolution 24]
+amenity=telephone { name '${name} (${operator})' | '${name}' | '${operator}' } [0x5100 resolution 24 default_name 'Phone']
+amenity=theatre [0x2d01 resolution 24]
+amenity=toilets [0x4e00 resolution 24]
+amenity=townhall [0x3003 resolution 24]
+amenity=university [0x2c05 resolution 24]
+amenity=zoo [0x2c07 resolution 24]
+amenity=ferry_terminal [0x1200 resolution 22]
+
+barrier=bollard | barrier=bus_trap
+    {add access = no; add bicycle = yes; add foot = yes} [0x660f resolution 24]
+barrier=block | barrier=cycle_barrier | barrier=stile | barrier=kissing_gate
+    {add access = no; add foot = yes; add bicycle = yes} [0x660f resolution 24]
+barrier=gate | barrier=fence | barrier=wall | barrier=city_wall {add access = no} [0x5800 resolution 24]
+
+
+building=collapsed { name 'collapsed ${name}' } [0x6416 resolution 24]
+earthquake:damage=collapsed_building { name 'collapsed ${name}' } [0x6416 resolution 24]
+
+(highway=bus_stop | railway=tram_stop | railway=halt | railway=station)
+& lit=yes & (shelter=yes | covered=yes)
+{
+  set ref='${ref|def:}(${route_ref})';
+  name '${name|def:} ${ref|def:}*${operator|def:}';
+}
+(highway=bus_stop | railway=tram_stop | railway=halt | railway=station)
+& (shelter=yes | covered=yes)
+{
+  set ref='${ref|def:}(${route_ref})';
+  name '${name|def:} ${ref|def:}+${operator|def:}';
+}
+(highway=bus_stop | railway=tram_stop | railway=halt | railway=station)
+& (shelter=no | covered=no)
+{
+  set ref='${ref|def:}(${route_ref})';
+  name '${name|def:} ${ref|def:}-${operator|def:}';
+}
+(highway=bus_stop | railway=tram_stop | railway=halt | railway=station)
+& (name=*|ref=*|operator=*|route_ref=*)
+{
+  set ref='${ref|def:}(${route_ref})';
+  name '${name|def:} ${ref|def:} ${operator|def:}';
+}
+
+highway=bus_stop [0x2f08 resolution 24]
+highway=services [0x2a00 resolution 24]
+highway=emergency_access_point [0x3000 resolution 24]
+highway=ford { name '${name}' | ford } [0x6500 resolution 24]
+highway=motorway_junction { name '${ref} ${name}' | '${ref}' | '${name}' }
+highway=motorway_junction [0x2700 resolution 20]
+highway=traffic_signal | highway=traffic_signals [0x7001 resolution 24]
+highway=mini_roundabout [0x7002 resolution 24]
+highway=crossing [0x7003 resolution 24]
+
+historic=museum [0x2c02 resolution 24]
+historic=ruins [0x6416 resolution 24]
+historic=castle [0x6402 resolution 24]
+historic=monument [0x2c02 resolution 24]
+historic=memorial [0x2c02 resolution 24]
+historic=archaeological_site [0x6416 resolution 24]
+historic=wreck [0x1c01 resolution 24]
+historic=* [0x2c00 resolution 24]
+
+
+leisure=golf_course [0x2d05 resolution 24]
+leisure=marina [0x4300 resolution 24]
+leisure=park [0x2c06 resolution 24]
+leisure=pitch [0x2c08 resolution 24]
+leisure=playground [0x2c08 resolution 24]
+leisure=sports_center | leisure=sports_centre [0x2d0a resolution 24]
+leisure=stadium [0x2c08 resolution 24]
+leisure=track [0x2c08 resolution 24]
+leisure=water_park [0x2d09 resolution 24]
+
+landuse=quarry [0x640c resolution 24]
+landuse=landfill [0x2f15 resolution 24]
+landuse=basin [0x650d resolution 24]
+landuse=reservoir [0x650f resolution 24]
+landuse=recreation_ground [0x4900 resolution 22]
+
+man_made=beacon [0x1900 resolution 24]
+man_made=crane [0x6400 resolution 24]
+man_made=gasometer [0x6400 resolution 24]
+man_made=pier [0x6500 resolution 24]
+man_made=pipeline [0x6400 resolution 24]
+man_made=surveillance [0x5600 resolution 24]
+# man_made=survey_point [0x6400 resolution 24]
+man_made=wastewater_plant [0x2f15 resolution 24]
+man_made=watermill [0x6500 resolution 24]
+man_made=water_works [0x2f15 resolution 24]
+man_made=water_well [0x6414 resolution 24]
+man_made=well_water [0x6414 resolution 24]
+man_made=water_tap [0x6414 resolution 24]
+man_made=works [0x6400 resolution 24]
+man_made=tower [0x6411 resolution 24]
+man_made=communications_tower [0x6411 resolution 24]
+man_made=power_wind {name '${name}' | 'power wind'} [0x6400 resolution 24]
+man_made=reservoir_covered [0x650f resolution 24]
+man_made=reservoir [0x650f resolution 24]
+man_made=water_tower [0x650f resolution 24]
+man_made=lighthouse [0x1600 resolution 24]
+
+place=city [0x0400 resolution 10]
+place=hamlet [0x1100 resolution 22]
+place=suburb [0x0a00 resolution 22]
+place=town [0x0800 resolution 18]
+place=village [0x0b00 resolution 22]
+place=island [0x650c resolution 20]
+place=locality [0x1100 resolution 24]
+
+#power=generator {name '${name}' | 'power generator'} [0x6400 resolution 24]
+#power=sub_station {name '${name}' | 'power station'} [0x6400 resolution 24]
+#power=station {name '${name}' | 'power station'} [0x6400 resolution 24]
+#power=tower {name '${name}' |  '${ref}' } [0x6400 resolution 24]
+#power=* [0x6400 resolution 24]
+
+natural=beach [0x6604 resolution 20]
+#natural=cliff [0x6607 resolution 20]
+natural=peak {name '${name|def:}${ele|height:m=>ft|def:}' } [0x6616 resolution 20]
+#natural=rock [0x6614 resolution 20]
+#natural=spring [0x6511 resolution 24]
+#natural=tree [0x6618 resolution 24] # eigentlich: wooded area
+#natural=geyser [0x6509 resolution 22]
+natural=glacier [0x650a resolution 20]
+#natural=cave_entrance [0x6601 resolution 24]
+#natural=cave [0x6601 resolution 24]
+mountain_pass=yes [0x6300 resolution 24]
+
+#Namenszuordnung siehe bus_stop
+railway=halt [0x2f08 resolution 22]
+railway=station [0x2f08 resolution 16]
+railway=tram_stop [0x2f08 resolution 24]
+railway=crossing | railway=level_crossing [0x6406 resolution 24]
+
+#shop=bakers [0x2e00 resolution 24]
+#shop=bakery [0x2e00 resolution 24]
+shop=bakers [0x2a0d resolution 24]
+shop=bakery [0x2a0d resolution 24]
+shop=butchers [0x2e00 resolution 24]
+shop=butcher [0x2e00 resolution 24]
+shop=book [0x2e00 resolution 24]
+shop=clothes [0x2e07 resolution 24]
+shop=convenience [0x2e00 resolution 24]
+#shop=convenience [0x2e06 resolution 24]
+#eigentlich so, aber 0x2e06 wird auf Oregon falsch als Tankstelle darstestellt
+shop=department_store [0x2e01 resolution 24]
+shop=doityourself [0x2e08 resolution 24]
+shop=kiosk [0x2e00 resolution 24]
+#shop=kiosk [0x2e06 resolution 24] 
+#eigentlich so, aber 0x2e06 wird auf Oregon falsch als Tankstelle darstestellt
+shop=outdoor [0x2f0f resolution 24]
+shop=bicycle [0x2e00 resolution 24]
+shop=supermarket [0x2e02 resolution 24]
+shop=electronics [0x2e0b resolution 24]
+shop=furniture [0x2e09 resolution 24]
+shop=car [0x2f07 resolution 24]
+shop=books [0x2c03 resolution 24]
+shop=car_repair [0x2f03 resolution 24]
+shop=florist [0x2e00 resolution 24]
+shop=garden_centre [0x2e00 resolution 24]
+shop=computer [0x2e0b resolution 24]
+shop=scuba_diving [0x2e00 resolution 24 default_name 'Diving Equipment']
+shop=* [0x2e00 resolution 24]
+
+sport=golf [0x2d05 resolution 24]
+sport=skiing [0x2d06 resolution 24]
+sport=bowling [0x2d07 resolution 24]
+sport=9pin [0x2d07 resolution 24]
+sport=10pin [0x2d07 resolution 24]
+sport=skating [0x2d08 resolution 24]
+sport=swimming [0x2d09 resolution 24]
+sport=diving [0x5c00 resolution 24 default_name 'diving']
+sport=scuba_diving [0x5c00 resolution 24 default_name 'scuba diving']
+sport=* [0x2d0a resolution 24]
+
+tourism=attraction & historic=* [0x2c02 resolution 24]
+tourism=attraction [0x6402 resolution 24]
+tourism=alpine_hut [0x2b00 resolution 22]
+tourism=aquarium [0x2c07 resolution 24]
+tourism=camp_site & refugee=yes { name '${name} refugee camp' | 'refugee camp' } [0x2b03 resolution 24]
+tourism=camp_site [0x4800 resolution 24] 
+tourism=caravan_site [0x2b03 resolution 24]
+tourism=hotel { name '${name} ${operator}' | '${name}' | '${operator}' } [0x2b01 resolution 24]
+tourism=information [0x4c00 resolution 24]
+tourism=motel { name '${name} ${operator}' | '${name}' | '${operator}' } [0x2b01 resolution 24]
+tourism=museum [0x2c02 resolution 24]
+tourism=hostel [0x2b00 resolution 24]
+tourism=guest_house { name '${name} ${operator}' | '${name}' | '${operator}' } [0x2b01 resolution 24]
+tourism=picnic_site [0x4a00 resolution 24]
+tourism=theme_park [0x2c01 resolution 24]
+tourism=viewpoint [0x5200 resolution 24]
+tourism=zoo [0x2c07 resolution 24]
+tourism=* [0x6402 resolution 24]
+
+waterway=water_point { name '${name}' | 'drinking water' } [0x5000 resolution 24] #Trinkwasserentnahme
+waterway=dock { name '${name}' | 'dock' } [0x2f09 resolution 24]
+waterway=lock_gate { name '${name}' | 'lock gate' } [0x5800 resolution 24]
+waterway=turning_point { name '${name}' | 'turning point' } [0x6500 resolution 24]
+waterway=boatyard { name '${name}' | 'boat yard' } [0x2f09 resolution 24]
+waterway=weir { name '${name}' | 'weir' } [0x5500 resolution 24]
+waterway=mooring { name '${name}' | 'mooring' } [0x4300 resolution 24]
+natural=waterfall { name '${name}' | 'waterfall' } [0x6508 resolution 21]
+waterway=waterfall { name '${name}' | 'waterfall' } [0x6508 resolution 21]
+#waterway=* [0x6500 resolution 24]
+
+<finalize>
+# Namensbehandlung
+
+name=* { name '${name}' }
+

@@ -1,0 +1,333 @@
+# Aus dem Original- Style
+# first set the country code
+mkgmap:country!=* & mkgmap:admin_level2=* { set mkgmap:country='${mkgmap:admin_level2}' }
+mkgmap:country!=* & addr:country=* { set mkgmap:country='${addr:country}' }
+mkgmap:country!=* & is_in:country=* { set mkgmap:country='${is_in:country}' }
+
+# country specific rules first
+
+# Netherlands = NLD
+mkgmap:country=NLD & mkgmap:region!=* & mkgmap:admin_level4=* { set mkgmap:region='${mkgmap:admin_level4}' }
+mkgmap:country=NLD & mkgmap:city!=* & mkgmap:admin_level10=* { set mkgmap:city='${mkgmap:admin_level10}' } 
+mkgmap:country=NLD & mkgmap:city!=* & mkgmap:admin_level8=* { set mkgmap:city='${mkgmap:admin_level8}' } 
+
+# Germany = DEU cities
+mkgmap:country=DEU & mkgmap:city!=* & mkgmap:admin_level8=* { set mkgmap:city='${mkgmap:admin_level8}' } 
+mkgmap:country=DEU & mkgmap:city!=* & mkgmap:admin_level7=* { set mkgmap:city='${mkgmap:admin_level7}' } 
+mkgmap:country=DEU & mkgmap:city!=* & mkgmap:admin_level6=* { set mkgmap:city='${mkgmap:admin_level6}' } 
+mkgmap:country=DEU & mkgmap:city!=* & mkgmap:admin_level9=* { set mkgmap:city='${mkgmap:admin_level9}' } 
+mkgmap:country=DEU & mkgmap:city!=* & mkgmap:admin_level10=* { set mkgmap:city='${mkgmap:admin_level10}' } 
+
+
+mkgmap:country=AUT & mkgmap:city!=* & mkgmap:admin_level8=* { set mkgmap:city='${mkgmap:admin_level8}' }
+mkgmap:country=BEL & mkgmap:city!=* & mkgmap:admin_level8=* { set mkgmap:city='${mkgmap:admin_level8}' }
+mkgmap:country=CZE & mkgmap:city!=* & mkgmap:admin_level8=* { set mkgmap:city='${mkgmap:admin_level8}' }
+mkgmap:country=CZE & mkgmap:city!=* & mkgmap:admin_level7=* { set mkgmap:city='${mkgmap:admin_level7}' }
+mkgmap:country=DNK & mkgmap:city!=* & mkgmap:admin_level8=* { set mkgmap:city='${mkgmap:admin_level8}' }
+mkgmap:country=DNK & mkgmap:city!=* & mkgmap:admin_level7=* { set mkgmap:city='${mkgmap:admin_level7}' }
+mkgmap:country=FIN & mkgmap:city!=* & mkgmap:admin_level9=* { set mkgmap:city='${mkgmap:admin_level9}' }
+mkgmap:country=FIN & mkgmap:city!=* & mkgmap:admin_level8=* { set mkgmap:city='${mkgmap:admin_level8}' }
+mkgmap:country=FRA & mkgmap:city!=* & mkgmap:admin_level9=* { set mkgmap:city='${mkgmap:admin_level9}' }
+mkgmap:country=FRA & mkgmap:city!=* & mkgmap:admin_level8=* { set mkgmap:city='${mkgmap:admin_level8}' }
+mkgmap:country=ISL & mkgmap:city!=* & mkgmap:admin_level8=* { set mkgmap:city='${mkgmap:admin_level8}' }
+mkgmap:country=ITA & mkgmap:city!=* & mkgmap:admin_level8=* { set mkgmap:city='${mkgmap:admin_level8}' }
+mkgmap:country=LUX & mkgmap:city!=* & mkgmap:admin_level8=* { set mkgmap:city='${mkgmap:admin_level8}' }
+mkgmap:country=NOR & mkgmap:city!=* & mkgmap:admin_level9=* { set mkgmap:city='${mkgmap:admin_level9}' }
+mkgmap:country=POL & mkgmap:city!=* & mkgmap:admin_level10=* { set mkgmap:city='${mkgmap:admin_level10}' }
+mkgmap:country=POL & mkgmap:city!=* & mkgmap:admin_level8=* { set mkgmap:city='${mkgmap:admin_level8}' }
+mkgmap:country=PRT & mkgmap:city!=* & mkgmap:admin_level9=* { set mkgmap:city='${mkgmap:admin_level9}' }
+mkgmap:country=PRT & mkgmap:city!=* & mkgmap:admin_level8=* { set mkgmap:city='${mkgmap:admin_level8}' }
+mkgmap:country=SVN & mkgmap:city!=* & mkgmap:admin_level10=* { set mkgmap:city='${mkgmap:admin_level10}' }
+mkgmap:country=ESP & mkgmap:city!=* & mkgmap:admin_level8=* { set mkgmap:city='${mkgmap:admin_level8}' }
+mkgmap:country=SWE & mkgmap:city!=* & mkgmap:admin_level9=* { set mkgmap:city='${mkgmap:admin_level9}' }
+mkgmap:country=SWE & mkgmap:city!=* & mkgmap:admin_level7=* { set mkgmap:city='${mkgmap:admin_level7}' }
+mkgmap:country=CHE & mkgmap:city!=* & mkgmap:admin_level8=* { set mkgmap:city='${mkgmap:admin_level8}' }
+ 
+# common rules for all the rest of countries
+mkgmap:region!=* & mkgmap:admin_level6=* { set mkgmap:region='${mkgmap:admin_level6}' } 
+mkgmap:region!=* & mkgmap:admin_level5=* { set mkgmap:region='${mkgmap:admin_level5}' } 
+mkgmap:region!=* & mkgmap:admin_level4=* { set mkgmap:region='${mkgmap:admin_level4}' } 
+mkgmap:region!=* & mkgmap:admin_level3=* { set mkgmap:region='${mkgmap:admin_level3}' } 
+mkgmap:region!=* & is_in:county=* { set mkgmap:region='${is_in:county}' } 
+
+mkgmap:city!=* & mkgmap:admin_level8=* { set mkgmap:city='${mkgmap:admin_level8}' } 
+mkgmap:city!=* & mkgmap:admin_level7=* { set mkgmap:city='${mkgmap:admin_level7}' } 
+mkgmap:city!=* & mkgmap:admin_level9=* { set mkgmap:city='${mkgmap:admin_level9}' } 
+mkgmap:city!=* & mkgmap:admin_level10=* { set mkgmap:city='${mkgmap:admin_level10}' } 
+mkgmap:city!=* & is_in:city=* { set mkgmap:city='${is_in:city}' }
+mkgmap:city!=* & addr:city=* { set mkgmap:city='${addr:city}' }
+
+mkgmap:postal_code!=* & mkgmap:postcode=* { set mkgmap:postal_code='${mkgmap:postcode}' } 
+mkgmap:postal_code!=* & addr:postcode=* { set mkgmap:postal_code='${addr:postcode}' } 
+
+mkgmap:street!=* & addr:street=* { set mkgmap:street='${addr:street}' }
+mkgmap:street!=* & addr:housename=* { set mkgmap:street='${addr:housename}' }
+
+mkgmap:housenumber!=* & addr:housenumber=* { set mkgmap:housenumber='${addr:housenumber}' }
+
+mkgmap:phone!=* & phone=* { set mkgmap:phone='${phone}' }
+
+mkgmap:is_in!=* & is_in=* { set mkgmap:is_in='${is_in}' }
+
+
+aeroway=runway [0x27 resolution 18]
+aeroway=taxiway [0x2c resolution 22]
+
+aerialway=cable_car [0x10e14 resolution 24]
+aerialway=chair_lift [0x10e14 resolution 24]
+aerialway=drag_lift [0x10e14 resolution 24]
+aerialway=gondola [0x10e14 resolution 24]
+
+boundary=administrative [0x1d resolution 20]
+boundary=national [0x1e resolution 10]
+boundary=political [0x1c resolution 10]
+
+# eventuell nicht optimal, die 0x19 ist eigentlich die Zeitzonengrenze vielleicht
+# besser die 0x17, die ist unbelegt
+
+barrier=fence | barrier=wall | barrier=city_wall | barrier=hence | barrier=hedge | barrier=retaining_wall | barrier=bollard [0x17 resolution 24]
+
+# Contours take their name from the elevation setting.
+contour=elevation & contour_ext=elevation_minor
+        { name '${ele|conv:m=>ft}'; }
+        [0x20 resolution 23]
+contour=elevation & contour_ext=elevation_medium
+        { name '${ele|conv:m=>ft}'; }
+        [0x21 resolution 21]
+contour=elevation & contour_ext=elevation_major
+        { name '${ele|conv:m=>ft}'; }
+        [0x22 resolution 20]
+contour=elevation | contour_ext=elevation
+        { name '${ele|conv:m=>ft}'; }
+        [0x21 resolution 20]
+
+# Spezialbehandlung für extra-Elemente
+
+highway=* & (bridge=yes) [0x10e1d resolution 24 continue ]
+highway=* & (tunnel=yes) [0x10e18 resolution 24 continue ]
+highway=* & (oneway=yes) [0x10e1e resolution 24 continue ]
+highway=* & (access=no)  [0x10f01 resolution 24 continue ]
+highway=* & (access=private)  [0x10f01 resolution 24 continue ]
+highway=* & (embankment=yes) [0x10f00 resolution 24 continue ]
+railway=* & (embankment=yes) [0x10f00 resolution 24 continue ]
+embankment=yes [0x10f00 resolution 24 continue ]
+
+junction=roundabout & highway=trunk [0x0c road_class=3 road_speed=4 resolution 14]
+junction=roundabout & highway=primary [0x0c road_class=3 road_speed=3 resolution 18]
+junction=roundabout & highway=secondary [0x0c road_class=2 road_speed=3 resolution 18]
+junction=roundabout & highway=tertiary [0x0c road_class=1 road_speed=3 resolution 18]
+junction=roundabout & highway=unclassified [0x0c road_class=1 road_speed=2 resolution 21]
+junction=roundabout [0x0c road_class=0 road_speed=1 resolution 22]
+
+# Set highway names to include the reference if there is one, and add the shield signs 
+highway=motorway {name '${ref|highway-symbol:hbox} ${name}' | '${ref|highway-symbol:hbox}' | '${name}' ; add mkgmap:display_name = '${name} (${ref})' }
+highway=motorway_link {name '${ref|highway-symbol:hbox} ${name}' | '${ref|highway-symbol:hbox}' | '${name}' ; add mkgmap:display_name = '${name} (${ref})' }
+highway=trunk {name '${ref|highway-symbol:box} ${name}' | '${ref|highway-symbol:box}' | '${name}' ; add mkgmap:display_name = '${name} (${ref})' }
+highway=trunk_link {name '${ref|highway-symbol:box} ${name}' | '${ref|highway-symbol:box}' | '${name}' ; add mkgmap:display_name = '${name} (${ref})' }
+highway=primary {name '${ref|highway-symbol:box} ${name}' | '${ref|highway-symbol:box}' | '${name}' ; add mkgmap:display_name = '${name} (${ref})' }
+highway=primary_link {name '${ref|highway-symbol:box} ${name}' | '${ref|highway-symbol:box}' | '${name}' ; add mkgmap:display_name = '${name} (${ref})' }
+highway=secondary {name '${ref|highway-symbol:oval} ${name}' | '${ref|highway-symbol:oval}' | '${name}' ; add mkgmap:display_name = '${name} (${ref})' }
+highway=secondary_link {name '${ref|highway-symbol:oval} ${name}' | '${ref|highway-symbol:oval}' | '${name}' ; add mkgmap:display_name = '${name} (${ref})' }
+
+highway=* {name '${ref} ${name}' | '${ref}' | '${name}' ; add mkgmap:display_name = '${name} (${ref})' }
+
+highway=* & disused=yes {add access = no}
+
+# Convert generic path to most specific
+highway=path & bicycle=designated {set highway=cycleway }
+highway=path & horse=designated {set highway=bridleway }
+highway=path & foot=designated {set highway=footway }
+
+
+highway=bridleway {add access = no; add bicycle = yes; add foot = yes} [0x16 road_class=0 road_speed=0 resolution 24]
+highway=byway [0x0a road_class=0 road_speed=0 resolution 24]
+highway=cycleway {add access = no; add bicycle = yes; add foot = yes} [0x0a road_class=0 road_speed=1 resolution 24]
+highway=construction {add access = no} [0x10 road_class=0 road_speed=0 resolution 24]
+highway=* & construction=yes {add access = no} [0x10 road_class=0 road_speed=0 resolution 24]
+highway=footway & bicycle=yes {add access = no; add bicycle = yes; add foot = yes} [0x0a road_class=0 road_speed=1 resolution 24]
+highway=footway {add access = no; add foot = yes; add bicycle = yes} [0x16 road_class=0 road_speed=0 resolution 24]
+highway=path & bicycle=yes {add access = no; add foot = yes; add bicycle = yes} [0x0a road_class=0 road_speed=0 resolution 24]
+highway=path {add access = no; add foot = yes; add bicycle = yes} [0x16 road_class=0 road_speed=0 resolution 24]
+highway=living_street [0x07 road_class=0 road_speed=1 resolution 24]
+highway=minor [0x06 road_class=0 road_speed=3 resolution 22]
+highway=motorway {add oneway = yes; add bicycle = no; add foot = no} [0x01 road_class=4 road_speed=7 resolution 10]
+highway=motorway_link & maxspeed > 49 {add oneway = yes; add bicycle = no; add foot = no} [0x09 road_class=4 road_speed=5 resolution 10]
+highway=motorway_link & maxspeed < 50 {add oneway = yes; add bicycle = no; add foot = no} [0x08 road_class=4 road_speed=2 resolution 10]
+highway=motorway_link {add oneway = yes; add bicycle = no; add foot = no} [0x09 road_class=4 road_speed=5 resolution 10]
+highway=pedestrian & area!=yes {add access = no; add foot = yes; add bicycle = yes} [0x07 road_class=0 road_speed=0 resolution 24]
+highway=pedestrian {add access = no; add foot = yes; add bicycle = yes} [0x07 road_class=0 road_speed=0 resolution 24 continue]
+
+highway=primary & maxspeed<=50 {name '${name} (${ref})' | '${ref}' } [0x03 road_class=3 road_speed=2 resolution 22]
+highway=primary & maxspeed<=80 {name '${name} (${ref})' | '${ref}' } [0x03 road_class=3 road_speed=4 resolution 18]
+highway=primary [0x02 road_class=4 road_speed=4 resolution 18]
+highway=primary_link [0x02 road_class=3 road_speed=4 resolution 22]
+
+highway=residential [0x06 road_class=1 road_speed=2 resolution 24]
+
+highway=secondary & maxspeed<=50 [0x04 road_class=2 road_speed=3 resolution 22]
+highway=secondary & maxspeed<=80 [0x04 road_class=2 road_speed=3 resolution 20]
+highway=secondary [0x04 road_class=2 road_speed=3 resolution 18]
+highway=secondary_link [0x04 road_class=2 road_speed=3 resolution 18]
+
+highway=service [0x07 road_class=0 road_speed=2 resolution 24]
+highway=bus_guideway {add access = no} [0x07 resolution 24]
+highway=steps {add access = no; add foot = yes; add bicycle = yes} [0x16 road_class=0 road_speed=0 resolution 24]
+highway=tertiary [0x05 road_class=2 road_speed=3 resolution 18]
+piste:type=downhill  {add access = no} [0x16 road_class=0 road_speed=0 resolution 24]
+tracktype=grade1 & area!=yes {name '${name} (1 - very good)' | '(1 - very good)'; add access = no; add bicycle = yes; add foot = yes} [0x0a road_class=1 road_speed=1 resolution 24]
+tracktype=grade1 {name '${name} (1 - very good)' | '(1 - very good)'; add access = no; add bicycle = yes; add foot = yes} [0x0a road_class=1 road_speed=1 resolution 24 continue]
+tracktype=grade2 & area!=yes {name '${name} (2 - good)' | '(2 - good)'; add access = no; add bicycle = yes; add foot = yes} [0x0a road_class=1 road_speed=1 resolution 24]
+tracktype=grade2 {name '${name} (2 - good)' | '(2 - good)'; add access = no; add bicycle = yes; add foot = yes} [0x0a road_class=1 road_speed=1 resolution 24 continue]
+tracktype=grade3 {name '${name} (3 - moderate)' | '(3 - moderate)'; add access = no; add bicycle = yes; add foot = yes} [0x0a road_class=0 road_speed=1 resolution 24]
+tracktype=grade4 {name '${name} (4 - bad)' | '(4 - bad)'; add access = no; add bicycle = no; add foot = yes} [0x16 road_class=0 road_speed=0 resolution 24]
+tracktype=grade5 {name '${name} (5 - very bad)' | '(5 - very bad)'; add access = no; add bicycle = no; add foot = yes} [0x16 road_class=0 road_speed=0 resolution 24]
+highway=track [0x0a road_class=0 road_speed=1 resolution 22]
+highway=track & area!=yes {add access = no; add bicycle = yes; add foot = yes} [0x0a road_class=0 road_speed=0 resolution 24]
+highway=track {add access = no; add bicycle = yes; add foot = yes} [0x0a road_class=0 road_speed=0 resolution 24 continue]
+highway=trunk {add bicycle = no; add foot = no} [0x02 road_class=3 road_speed=6 resolution 14]
+highway=trunk_link {add bicycle = no; add foot = no} [0x0b road_class=3 road_speed=6 resolution 14]
+highway=unclassified [0x06 road_class=3 road_speed=3 resolution 22]
+highway=road [0x06 road_class=3 road_speed=3 resolution 22]
+highway=unsurfaced [0x0a road_class=1 road_speed=1 resolution 24]
+
+man_made=breakwater [0x15 resolution 24]
+man_made=pier [0x07 road_class=0 road_speed=0 resolution 24]
+man_made=pipeline {name '${operator}'} [0x28 resolution 24]
+natural=coastline [0x15 resolution 10]
+natural=cliff [0x2b resolution 24]
+power=line [0x29 resolution 24]
+
+
+railway=* & (bridge=yes) [0x10e1d resolution 24 continue ]
+railway=* & (tunnel=yes) [0x10e18 resolution 24 continue ]
+
+#railway=light_rail & !(layer<0) [0x14 resolution 20]
+railway=light_rail [0x10e0e resolution 22]
+railway=monorail { name '${name} monorail' | 'monorail' } [0x10e0e resolution 22]
+railway=rail & !(layer<0) [0x14 resolution 20]
+#railway=subway & !(layer<0) [0x14 resolution 24]
+railway=subway [0x10e10 resolution 24]
+#railway=tram & !(layer<0) [0x14 resolution 24]
+railway=tram [0x10e0f resolution 24]
+#railway=narrow_gauge & !(layer<0) [0x14 resolution 24]
+railway=narrow_gauge [0x10e0d resolution 24]
+railway=miniature [0x10e0d resolution 24]
+railway=preserved [0x14 resolution 24]
+railway=platform [0x16 resolution 24]
+railway=disused { name '${name} disused railway' | 'disused railway' } [0x16 resolution 24]
+railway=proposed { name '${name} proposed railway' | 'proposed railway' } [0x16 resolution 24]
+railway=construction [0x10 resolution 24]
+# 0x11 ist unbelegt, eventuell mal zu ändern
+railway=* & (layer<0) [0x11 resolution 24]
+railway=* & (tunnel=yes) [0x11 resolution 24]
+railway=* & !(building=*) { name '${name} unknown railway' | 'unknown railway' } [0x16 resolution 24]
+
+
+route=ferry [0x1a road_class=0 road_speed=0 resolution 22]
+
+waterway=canal [0x1f resolution 22]
+waterway=drain [0x18 resolution 24]
+waterway=ditch [0x18 resolution 24]
+waterway=river [0x1f resolution 10]
+waterway=stream [0x18 resolution 24]
+waterway=weir [0x1010c resolution 22]
+
+# Neue Ideen (aus der Topo 2010):
+# Baumreihe 10f0b
+
+
+# Wanderweg mit Nummer 0x0e
+
+<finalize>
+# Namensbehandlung
+
+name=* { name '${name}' }
+
+# Geschwindigkeitsbehandliung
+
+maxspeed=* & mkgmap:road-speed-class!=* & maxspeedkmh() > 110 { set mkgmap:road-speed-class = 7 }
+maxspeed=* & mkgmap:road-speed-class!=* & maxspeedkmh() >  90 { set mkgmap:road-speed-class = 6 }
+maxspeed=* & mkgmap:road-speed-class!=* & maxspeedkmh() >  80 { set mkgmap:road-speed-class = 5 }
+maxspeed=* & mkgmap:road-speed-class!=* & maxspeedkmh() >  60 { set mkgmap:road-speed-class = 4 }
+maxspeed=* & mkgmap:road-speed-class!=* & maxspeedkmh() >  40 { set mkgmap:road-speed-class = 3 }
+maxspeed=* & mkgmap:road-speed-class!=* & maxspeedkmh() >  20 { set mkgmap:road-speed-class = 2 }
+# change class 1 to 10 km/h which is not correct but better handles living_streets with maxspeed=7
+maxspeed=* & mkgmap:road-speed-class!=* & maxspeedkmh() >  10 { set mkgmap:road-speed-class = 1 }
+maxspeed=* & mkgmap:road-speed-class!=* & maxspeedkmh()=*     { set mkgmap:road-speed-class = 0 }
+
+# Straßenbeschraenkungen
+
+# Define the access restrictions
+# The following tags define the restrictions:
+# mkgmap:bicycle
+# mkgmap:foot
+# mkgmap:car
+# mkgmap:truck
+# mkgmap:taxi
+# mkgmap:bus
+# mkgmap:emergency
+# mkgmap:delivery
+# A class is not allowed to use the way if its tag is set to 'no'
+
+highway=steps                           { add foot=yes; add access=no }
+highway=* & motorroad=yes               { add bicycle=no; add foot=no }
+highway=motorway|highway=motorway_link  { add bicycle=no; add foot=no }
+highway=pedestrian & area!=yes          { add foot=yes; add access=no } 
+highway=path                            { add foot=yes; add bicycle=yes; add access=no } 
+highway=bridleway                       { add access=no }
+highway=cycleway                        { add bicycle=yes; add access=no }
+highway=footway                         { add foot=yes; add access=no }
+railway=platform                        { add foot=yes; add access=no }
+
+
+motorcar=destination   { set mkgmap:throughroute=no; set motorcar=yes } 
+motorcycle=destination { set mkgmap:throughroute=no; set motorcycle=yes } 
+access=destination     { set mkgmap:throughroute=no; set access=yes }
+bicycle=destination    { set bicycle=yes }
+foot=destination       { set foot=yes }                  
+hgv=destination        { delete hgv }                  
+psv=destination        { delete psv }                  
+taxi=destination       { delete taxi }                  
+emergency=destination  { delete emergency }                  
+delivery=destination   { delete delivery }                  
+goods=destination      { delete goods }                  
+
+bicycle=private       | bicycle=agricultural       { set bicycle=no }
+foot=private          | foot=agricultural          { set foot=no }
+hgv=private           | hgv=agricultural           { set hgv=no }
+motorcar=private      | motorcar=agricultural      { set motorcar=no }
+psv=private           | psv=agricultural           { set psv=no }
+taxi=private          | taxi=agricultural          { set taxi=no }
+emergency=private     | emergency=agricultural     { set emergency=no }
+delivery=private      | delivery=agricultural      { set delivery=no }
+goods=private         | goods=agricultural         { set goods=no }
+motorcycle=private    | motorcycle=agricultural    { set motorcycle=no }
+motor_vehicle=private | motor_vehicle=agricultural { set motor_vehicle=no }
+vehicle=private       | vehicle=agricultural       { set vehicle=no }
+access=private                                     { set access=no }
+access=agricultural                                { set access=no; add foot=yes }
+
+# set (override) specific restrictions                        
+bicycle=*    { set mkgmap:bicycle='${bicycle}' }
+foot=*       { set mkgmap:foot='${foot}' }                  
+hgv=*        { set mkgmap:truck='${hgv}' }                  
+motorcar=*   { set mkgmap:car='${motorcar}' }
+psv=*        { set mkgmap:bus='${psv}' }                  
+taxi=*       { set mkgmap:taxi='${taxi}' }                  
+emergency=*  { set mkgmap:emergency='${emergency}' }                  
+delivery=*   { set mkgmap:delivery='${delivery}' }                  
+goods=*      { set mkgmap:delivery='${goods}' }                  
+
+# Translate motor_vehicle and vehicle access rules.
+motorcycle=*    { add mkgmap:car='${motorcycle}' }                  
+motor_vehicle=* { add mkgmap:car='${motor_vehicle}' }
+vehicle=*       { add mkgmap:car='${vehicle}'; add mkgmap:bicycle='${vehicle}' }
+
+# the access tag defines all restrictions
+access=* { addaccess '${access}' }
+
+
+# check for carpool lane 
+(carpool=yes | carpool=designated | carpool=permissive | carpool=official)     { set mkgmap:carpool=yes }
+
+
