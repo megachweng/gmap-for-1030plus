@@ -43,9 +43,9 @@
 
 # admin-level
 > china-class = 
-municipality 直辖市
-sub-provincial city 副省级市
-prefecture-level city 地级市
-county-level city 县级市
-district 区
-countytown ??
+municipality 直辖市  
+sub-provincial city 副省级市  
+prefecture-level city 地级市  
+county-level city 县级市  
+district 区  
+countytown ??  
