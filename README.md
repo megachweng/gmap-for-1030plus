@@ -42,7 +42,8 @@
 12m
 
 # admin-level
-> china-class = 
+> china-class =   
+
 municipality 直辖市  
 sub-provincial city 副省级市  
 prefecture-level city 地级市  
